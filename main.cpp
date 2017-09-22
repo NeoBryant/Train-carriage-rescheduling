@@ -6,12 +6,16 @@
 
 
 #include <iostream>
-#include "ReschedulingSystem.h"
+#include "ReschedulingSystem.hpp"
 using namespace std;
 
 int main() {
 
+	ReschedulingSystem system;
 
+	system.read();
+	system.rescheduling();
+	system.print();
 
 
 	return 0;
