@@ -69,9 +69,14 @@ void ReschedulingSystem::rescheduling() {
 	while (rail_out.size() != number_carriages) {
 		isInBuffers = false;
 
-		//cout << rail_in.top() << " ";
 		//is the current number on the top of the rail
 		if (rail_in.size() && rail_in.top() == count) {
+
+
+			cout << "Step " << step+1 << ": "
+				 << "From entance |-- " << rail_in.top() << " --> "
+				 << "exit" << endl;
+
 			rail_out.push(rail_in.top());
 			rail_in.pop();
 
@@ -81,6 +86,12 @@ void ReschedulingSystem::rescheduling() {
 			//is the current number in one of the tops of buffers
 			for (int i = 0; i < number_buffers; ++i) {
 				if (buffer[i].size() && buffer[i].top() == count) {
+
+					cout << "Step " << step+1 << ": "
+						 << "From No." << i << " buffer rail |-- " 
+						 << buffer[i].top() << " --> "
+						 << "exit" << endl;
+
 					rail_out.push(buffer[i].top());
 					buffer[i].pop();
 
@@ -97,6 +108,11 @@ void ReschedulingSystem::rescheduling() {
 				for (int i = 0; i < number_buffers; ++i) {
 					if (rail_in.top() && buffer[i].size() 
 						&& rail_in.top() < buffer[i].top()) {
+
+						cout << "Step " << step+1 << ": "
+							 << "From entance |-- " << rail_in.top() << " --> "
+							 << "No." << i << " buffer rail" << endl;
+
 						buffer[i].push(rail_in.top());
 						rail_in.pop();
 
@@ -106,6 +122,11 @@ void ReschedulingSystem::rescheduling() {
 					}
 
 					if (buffer[i].size() == 0) {
+
+						cout << "Step " << step+1 << ": "
+							 << "From entance |-- " << rail_in.top() << " --> "
+							 << "No." << i << " buffer rail" << endl;
+
 						buffer[i].push(rail_in.top());
 						rail_in.pop();
 						
@@ -117,6 +138,11 @@ void ReschedulingSystem::rescheduling() {
 
 				//open a new buffer rail
 				if (openNewBuffer) {
+
+					cout << "Step " << step+1 << ": "
+						 << "From entance |-- " << rail_in.top() << " --> "
+						 << "No." << number_buffers << " buffer rail(new one)" << endl;
+
 					buffer[number_buffers].push(rail_in.top());
 					rail_in.pop();
 
