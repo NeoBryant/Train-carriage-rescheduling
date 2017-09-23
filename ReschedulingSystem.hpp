@@ -88,7 +88,7 @@ void ReschedulingSystem::rescheduling() {
 				if (buffer[i].size() && buffer[i].top() == count) {
 
 					cout << "Step " << step+1 << ": "
-						 << "From No." << i << " buffer rail |-- " 
+						 << "From No." << i+1 << " buffer rail |-- " 
 						 << buffer[i].top() << " --> "
 						 << "exit" << endl;
 
@@ -111,7 +111,7 @@ void ReschedulingSystem::rescheduling() {
 
 						cout << "Step " << step+1 << ": "
 							 << "From entance |-- " << rail_in.top() << " --> "
-							 << "No." << i << " buffer rail" << endl;
+							 << "No." << i+1 << " buffer rail" << endl;
 
 						buffer[i].push(rail_in.top());
 						rail_in.pop();
@@ -125,7 +125,7 @@ void ReschedulingSystem::rescheduling() {
 
 						cout << "Step " << step+1 << ": "
 							 << "From entance |-- " << rail_in.top() << " --> "
-							 << "No." << i << " buffer rail" << endl;
+							 << "No." << i+1 << " buffer rail" << endl;
 
 						buffer[i].push(rail_in.top());
 						rail_in.pop();
@@ -141,7 +141,7 @@ void ReschedulingSystem::rescheduling() {
 
 					cout << "Step " << step+1 << ": "
 						 << "From entance |-- " << rail_in.top() << " --> "
-						 << "No." << number_buffers << " buffer rail(new one)" << endl;
+						 << "No." << number_buffers+1 << " buffer rail(new one)" << endl;
 
 					buffer[number_buffers].push(rail_in.top());
 					rail_in.pop();
